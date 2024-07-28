@@ -63,7 +63,7 @@
               <div class="swiper-wrapper align-items-center">
           
                 <div class="swiper-slide">
-                  <video src="assets/vid/end.mp4" class="img-fluid" alt="Chapter 6 Video" controls autoplay loop></video>
+                  <video id="chapter6-video" src="assets/vid/end.mp4" class="img-fluid" alt="Chapter 6 Video" controls autoplay loop playsinline></video>
                 </div>
           
               </div>
@@ -113,6 +113,14 @@
 
  
   <script src="assets/js/main.js"></script>
+  <script>
+    window.onload = function() {
+      var video = document.getElementById('chapter6-video');
+      video.play().catch(function(error) {
+        console.log('Autoplay was prevented:', error);
+      });
+    };
+  </script>
 
 
 </body>

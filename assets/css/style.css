@@ -1350,6 +1350,15 @@ section .container {
   }
 }
 
+.selesai{
+    color: blue;
+            text-decoration: blue; 
+  }
+
+  .selesai:hover {
+            text-decoration: underline; 
+  }
+
 .credits a {
   color: #e93657;
   transition: 0.5s;

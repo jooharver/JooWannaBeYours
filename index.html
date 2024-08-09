@@ -50,11 +50,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#services">More</a></li>
-          <li><a class="nav-link" href="#portfolio">Journey</a></li>
-          <li><a class="nav-link" href="#resume">Resume</a></li>
+          <li><a id="homeNav" class="nav-link active" href="#header">Home</a></li>
+          <li><a id="aboutNav" class="nav-link" href="#about">About</a></li>
+          <li><a id="moreNav" class="nav-link" href="#services">More</a></li>
+          <li><a id="journeyNav" class="nav-link" href="#portfolio">Journey</a></li>
+          <li><a id="resumeNav" class="nav-link" href="#resume">Resume</a></li>
          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -512,8 +512,7 @@
 <!-- ======= Resume Section ======= -->
 <section id="resume" class="resume">
   <div class="container">
-    <audio id="resumeMusic" src="assets/elaku.mp3" autoplay loop>
-</audio>
+    <audio id="resumeMusic" src="assets/elaku.mp3" autoplay loop playsinline></audio>
 
     <div class="section-title">
       <h2>Resume</h2>
@@ -531,6 +530,7 @@
 
   </div>
 </section><!-- End Resume Section -->
+
 
 
   <!-- ======= Services Section ======= -->
@@ -794,12 +794,44 @@
   });
 </script>
   <script src="assets/js/main.js"></script>
-  <script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         var audio = document.getElementById("resumeMusic");
-        audio.play();
+        audio.volume = 1.0; // Set volume to 100%
+        audio.play().catch(function(error) {
+            console.log("Autoplay failed: ", error);
+        });
     });
+</script> -->
+
+<script>
+  // Ambil elemen audio
+  var audio = document.getElementById("resumeMusic");
+
+  // Fungsi untuk memutar musik
+  function playMusic() {
+      audio.play().catch(function(error) {
+          console.log("Autoplay was prevented.");
+      });
+  }
+
+  // Fungsi untuk menghentikan musik
+  function stopMusic() {
+      audio.pause();
+      audio.currentTime = 0; // Kembali ke awal lagu
+  }
+
+  // Menambahkan event listener ke masing-masing navbar item
+  document.getElementById("resumeNav").addEventListener("click", playMusic);
+
+  // Menambahkan event listener ke item navbar lainnya untuk menghentikan musik
+  document.getElementById("homeNav").addEventListener("click", stopMusic);
+  document.getElementById("aboutNav").addEventListener("click", stopMusic);
+  document.getElementById("moreNav").addEventListener("click", stopMusic);
+  document.getElementById("journeyNav").addEventListener("click", stopMusic);
+  // Tambahkan item navbar lainnya sesuai kebutuhan
 </script>
+
 
 </body>
 
